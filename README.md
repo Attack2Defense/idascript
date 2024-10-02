@@ -3,14 +3,19 @@ IDA 可以使用 `batch` 模式来运行脚本，例如 `idat64.exe -B -S"test.p
 	
 	1. IDAPython 的输出放在 IDA 的窗口中，无法直接获取并打印到终端 ；
 	2. 错误的脚本可能会导致 IDA 进程无法按照预期关闭，并且不能获取到脚本的错误信息 ;
-	3. 没有超时机制，如果 IDApython 脚本陷入死循环，也会导致IDA卡死 。
+	3. 没有超时机制，如果 IDApython 脚本陷入死循环，也会导致IDA卡死无法退出 。
 
 为了解决上述问题，此项目诞生了。IDAScript包装了IDA的命令行，目的为了更加方便的从命令行批量的执行IDApython脚本。此版本是基于原版的 idascript 改写的，为了跨平台考虑所以使
-用 python 进行了重写，目前仅支持 IDApython 脚本的，相关的原理请参考如下项目 `http://www.hexblog.com/?p=128`,`https://github.com/quarkslab/idascript`,`https://github.com/devttys0/idascript`。
+用 python 进行了重写，目前仅支持 IDApython 脚本的，相关的原理请参考如下项目:
+
+
+> 1. `http://www.hexblog.com/?p=128`
+> 2. `https://github.com/quarkslab/idascript`
+> 3. `https://github.com/devttys0/idascript`。
 
 ## 安装
 
-安装此件本，只需要运行 `python install.py IDA_INSTALLED_PATH`，或者直接运行 `python installl.py`，在提示中输入IDA的安装路径。
+安装此脚本，只需要运行 `python install.py IDA_INSTALLED_PATH`，或者直接运行 `python installl.py`，在提示中输入IDA的安装路径即可。
 
 例如在 OSX 上：
 
@@ -51,7 +56,7 @@ $ idascript --enable-32bit -s test.py -t 10 target.exe
 
 ### 例子
 
-此时就可以直接给`test.py`传入参数，并且可以获取到输出，例如:
+此时可以直接给`test.py`传入参数，并且可以获取到它的输出，例如:
 
 ```python
 #test.py 
@@ -70,7 +75,7 @@ $ idascript -s ./test.py  -t 10  target.exe  srcipt_arg1
 
 ### 异常处理
 
-写代码谁都会有错误，idascript可以帮你捕捉到错误:
+写代码谁都会有错误，`idascript` 可以帮你捕捉到错误:
 
 例如如下会报错的代码：
 
