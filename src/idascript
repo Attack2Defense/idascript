@@ -239,7 +239,8 @@ idascript.exit()
         env = os.environ
         env["TVHEADLESS"] = "1"
         env["TERM"] = "xterm"
-
+        if "HOME" not in env:
+            env["HOME"] = "/root/"
         self._process = subprocess.Popen(
             cmd_line,
             stdout=subprocess.DEVNULL,
